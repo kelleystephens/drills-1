@@ -11,8 +11,8 @@
     var nums = $('#input').val().split(', ');
     var start = nums[0] * 1;
     var end = nums[1] * 1;
-    var x = makeArray(start, end);
-    console.log(x);
+    var x = makeArray(start, end).slice(-3).map(div);
+    $('#container').append(x);
   }
 
   function makeArray(x, y){
@@ -21,6 +21,10 @@
       array.push(i);
     }
     return array;
+  }
+
+  function div(x){
+    return '<div>'+ x +'</div>';
   }
 
 })();
