@@ -9,13 +9,21 @@
 
   function complete(){
     var words = $('#words').val();
-    var array = words.split(',');
-    $('#container').append(array.map(div));
+    var array = words.split(',').map(strip).map(casing).map(div);
+    $('#container').append(array);
   }
 
-  function div(x){
-    return $('<div>').addClass('new').text(x);
+  function div(word){
+    var cls = (word.length % 2) ? 'odd' : 'even';
+    return '<div class = "'+cls+'">'+word+'</div>';
   }
 
+  function strip(word){
+    return word.trim();
+  }
+
+  function casing(word){
+    return (word.length % 2) ? word.toUpperCase() : word.toLowerCase();
+  }
 
 })();

@@ -8,10 +8,14 @@
   }
 
   function answer(){
-    var string = $('#nums').val().split(' - ');
-    var array1 = string[0].split(', ');
-    var array2 = string[1].split(', ');
-    getPosition(array1, array2);
+    var outer = $('#nums').val().split('-').map(strip);
+    var base = outer[0].split(',').map(strip);
+    var exp = outer[1].split(',').map(strip);
+    getPosition(base, exp);
+  }
+
+  function strip(str){
+    return str.trim();
   }
 
    function getPosition(a, b){
