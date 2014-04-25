@@ -32,6 +32,7 @@
 
   function add(x){
     total += x;
+    total = total.toFixed(2);
     $('#display').text('$'+total);
   }
 

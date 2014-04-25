@@ -2,13 +2,29 @@ doctype html
 html(lang='en')
   head
     meta(charset='utf-8')
-    title Stock Quotes
-    link(rel='stylesheet', href='./css/d-16.css')
+    title Visual Quotes
+    link(rel='stylesheet', href='./css/d-20.css')
   body
-    h1 Stock Quotes
-    input#symbol(type='text', autofocus='true')
-    button#get Get Quotes
-    #container
+    h1 Visual Quotes
+    input#input(type='text', autofocus='true')
+    button#btn Get Visual
+    #yaxis
+      #h.ycount 200
+      #i.ycount 150
+      #j.ycount 125
+      #k.ycount 100
+      #l.ycount 75
+      #m.ycount 50
+      #n.ycount 25
+    #graph
+      #a.yticks
+      #b.yticks
+      #c.yticks
+      #d.yticks
+      #e.yticks
+      #f.yticks
+      #g.yticks
+    #names
 
     script(src='./js/vendor/jquery-2.1.0.js')
-    script(src='./js/source/d-16.js')
+    script(src='./js/source/d-20.js')

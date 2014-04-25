@@ -4,27 +4,43 @@
   $(document).ready(init);
 
   function init(){
-    $('#get').click(getQuote);
+    $('#btn').click(getQuote);
   }
 
   function getQuote(){
-    var symbol = $('#symbol').val().trim().toUpperCase();
-    var url = 'http://dev.markitondemand.com/Api/v2/Quote/jsonp?symbol='+symbol+'&callback=?';
-    var info = [];
-    $.getJSON(url, function(data){
-      var symbol = data.Symbol;
-      var name = data.Name;
-      var price = data.LastPrice;
-      var outer = $('<div class="big"></div>');
-      info.push(symbol, name, price);
-      $(outer).append(info.map(div));
-      $('#container').append(outer);
-      $('div').last().addClass('red');
-    });
+    $('#input').val().split(',').map(strip).map(path).forEach(quote);
   }
 
-  function div(x){
-    return '<div class="small">'+x+'</div>';
+  function strip(x){
+    return x.trim().toUpperCase();
   }
+
+  function path(symbol){
+    return 'http://dev.markitondemand.com/Api/v2/Quote/jsonp?symbol='+symbol+'&callback=?';
+  }
+
+  function quote(url){
+    $.getJSON(url, receive);
+  }
+
+  function receive(quote){
+    var price = quote.LastPrice;
+    var symbol = quote.Symbol;
+    insertSym(symbol);
+    placeDot(price);
+  }
+
+  function insertSym(sym){
+    var div = '<div id="'+sym+'" class="sym">'+sym+'</div>';
+    $('#names').append(div);
+  }
+
+  function placeDot(pr){
+    var dot = $('<div class="hold"><div class="dot"></div></div>').css('bottom', pr).css( 'left', +50);
+    $('#graph').append(dot);
+    console.log(pr);
+  }
+
+
 
 })();
