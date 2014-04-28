@@ -20,7 +20,7 @@
   }
 
   function product(sh, pr){
-    var position = sh * pr;
+    var position = (sh * pr).toFixed(2);
     $('#bottom').text('Position: $'+position);
   }
 

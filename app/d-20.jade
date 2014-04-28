@@ -2,29 +2,17 @@ doctype html
 html(lang='en')
   head
     meta(charset='utf-8')
-    title Visual Quotes
+    title Stock Quotes
     link(rel='stylesheet', href='./css/d-20.css')
   body
-    h1 Visual Quotes
-    input#input(type='text', autofocus='true')
-    button#btn Get Visual
-    #yaxis
-      #h.ycount 200
-      #i.ycount 150
-      #j.ycount 125
-      #k.ycount 100
-      #l.ycount 75
-      #m.ycount 50
-      #n.ycount 25
-    #graph
-      #a.yticks
-      #b.yticks
-      #c.yticks
-      #d.yticks
-      #e.yticks
-      #f.yticks
-      #g.yticks
-    #names
+    h1 Stock Quotes
+    input#input(type='text', autofocus='true', placeholder='Stock Symbol')
+    button#btn Get Quote
+    #chart
+
 
     script(src='./js/vendor/jquery-2.1.0.js')
+    script(src='http://www.amcharts.com/lib/3/amcharts.js')
+    script(src='http://www.amcharts.com/lib/3/serial.js')
+    script(src='http://www.amcharts.com/lib/3/themes/chalk.js')
     script(src='./js/source/d-20.js')

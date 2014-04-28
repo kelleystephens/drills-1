@@ -17,6 +17,7 @@
     $.getJSON(url, function(zip){
       getWind(zip);
     });
+    $('#zip').val('');
   }
 
   function getWind(zip){

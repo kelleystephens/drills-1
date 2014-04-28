@@ -8,9 +8,8 @@
   }
 
   function complete(){
-    var words = $('#words').val();
-    var array = words.split(',').map(strip).map(casing).map(div);
-    $('#container').append(array);
+    var words = $('#words').val().split(',').map(strip).map(casing).map(div);
+    $('#container').append(words);
   }
 
   function div(word){

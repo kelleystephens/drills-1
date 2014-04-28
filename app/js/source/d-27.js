@@ -17,6 +17,7 @@
     $.getJSON(url, function(zip){
       getTemp(zip);
     });
+    $('#zip').val('');
   }
 
   // svg path for target icon

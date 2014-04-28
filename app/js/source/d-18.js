@@ -7,13 +7,13 @@
     $('#get').click(getQuote);
   }
 
-  var timer;
-
   function getQuote(){
-    $('#symbol').val().split(',').map(strip).map(path).forEach(quote);
+    setInterval(quote, 5000);
   }
 
-  function quote(url){
+  function quote(){
+    var sym = $('#symbol').val().trim().toUpperCase();
+    var url = path(sym);
     $.getJSON(url, receive);
   }
 
@@ -23,22 +23,17 @@
     table(sym, price);
   }
 
-  function strip(word){
-    return word.trim().toUpperCase();
-  }
-
   function path(symbol){
     return 'http://dev.markitondemand.com/Api/v2/Quote/jsonp?symbol='+symbol+'&callback=?';
   }
 
   function table(sym, pr){
+    if($('td').hasClass(sym)){
+      var x = $('td').hasClass(sym);
+      $(x).text(pr);
+    }else{
     $('tbody').append('<tr><td>'+sym+'</td><td class="'+sym+'">$'+pr+'</td></tr>');
-    timer = setInterval(update, 1000);
+    }
   }
-
-  function update(){
-
-  }
-
 
 })();

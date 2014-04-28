@@ -17,6 +17,7 @@
     $.getJSON(url, function(quote){
       getQuote(quote);
     });
+    $('#sym').val('');
   }
 
   function getQuote(quote){
@@ -25,6 +26,7 @@
     price = price.toFixed(2);
     stock.company = quote.Name;
     stock.quote = ($('#shares').val().trim() * 1) * price;
+    $('#shares').val('');
     chart.dataProvider.push(stock);
     chart.validateData();
   }

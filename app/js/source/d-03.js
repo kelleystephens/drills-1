@@ -8,19 +8,21 @@
   }
 
   function answer(){
-    var nums = $('#nums').val();
-    var array = nums.split(', ');
-    var x = array.map(fourth).map(div);
-    $('#container').append(x);
+    var nums = $('#nums').val().split(', ').map(trim).map(fourth).map(div);
+    $('#container').append(nums);
   }
 
-  function fourth(x){
-    x *= 1;
-    return Math.pow(x, 4);
+  function trim(num){
+    return num.trim();
   }
 
-  function div(x){
-    return '<div>' + x + '</div>';
+  function fourth(num){
+    num *= 1;
+    return Math.pow(num, 4);
+  }
+
+  function div(num){
+    return '<div>' + num + '</div>';
   }
 
 

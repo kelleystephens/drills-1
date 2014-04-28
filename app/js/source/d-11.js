@@ -6,63 +6,43 @@
   function init(){
     createBig();
     createLittle();
-    $('.bigBox').click(findBig);
-    $('.littleBox').click(findLittle);
+    $('.bigBox').click(function(event){
+      event.stopPropagation();
+      addClassBig();});
+    $('.littleBox').click(function(event){
+      event.stopPropagation();
+      addClassLittle();});
     $('body').keydown(arrows);
   }
 
-  var little = [];
-  var big = [];
-
-  function findLittle(){
-    event.stopPropagation();
-    var a = $('.littleBox').css('top');
-    var b = $('.littleBox').css('left');
-    little.push(a, b);
-    console.log(little);
+  function addClassBig(){
+    $('.littleBox').removeClass('selected');
+    $('.bigBox').addClass('selected');
   }
 
-  function findBig(){
-    var a = $('.bigBox').css('top');
-    var b = $('.bigBox').css('left');
-    big.push(a, b);
-    console.log(big);
+  function addClassLittle(){
+    $('.bigBox').removeClass('selected');
+    $('.littleBox').addClass('selected');
   }
-
-  // function moveBig(x){
-  //   $('.bigBox').css( 'top', '+='+x+'px' );
-  // }
-  //
-  // function moveLittle(x){
-  //   $('.littleBox').css( 'top', '+='+x+'px' );
-  // }
 
   function arrows(event){
     switch(event.keyCode){
     case 38:
-      var x = 5;
+      $('.selected').css('top', '-=5');
       break;
     case 39:
-      move(5);
+      $('.selected').css('left', '+=5');
       break;
     case 40:
-      move(5);
+      $('.selected').css('top', '+=5');
       break;
     case 37:
-      move(-5);
+      $('.selected').css('left', '-=5');
     }
 
     if(event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 39 || event.keyCode === 40){
       event.preventDefault();
     }
-    move(x);
-    // moveBig(x);
-
-    return;
-  }
-
-  function move(){
-
   }
 
   function createBig(){

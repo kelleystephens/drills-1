@@ -16,6 +16,7 @@
     $.getJSON(url, function(quote){
       addQuoteToChart(quote);
     });
+    $('#symbol').val('');
   }
 
   function addQuoteToChart(quote){

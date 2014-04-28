@@ -25,11 +25,9 @@
     }
     var a = makePairs(array).map(div);
     $('#container').append(a);
-    return array;
   }
 
   function makePairs(x){
-    // debugger;
     var pairs = [];
     var i = 0;
     while(i < (x.length - 1)){

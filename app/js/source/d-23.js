@@ -17,6 +17,7 @@
     $.getJSON(url, function(zip){
     getWeather(zip);
     });
+    $('#zip').val('');
   }
 
   function getWeather(zip){
